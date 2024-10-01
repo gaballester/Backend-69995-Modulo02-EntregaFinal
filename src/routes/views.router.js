@@ -19,7 +19,7 @@ viewsRouter.get("/realtimeproducts", async (req,res) => {
 }
 )
 
-/* import ProductManager from '../dao/db/product.manager.db.js'
+import ProductManager from '../daos/db/product.manager.db.js'
 
 const productManager = new ProductManager()
 
@@ -54,7 +54,6 @@ viewsRouter.get("/", async (req, res) => {
         //res.render("home", arrayProducts)
     } catch (error) {
         res.status(500).send("Internal Server Error rendering home hdlb"); 
-    } 
+    }
 })
-    */
 

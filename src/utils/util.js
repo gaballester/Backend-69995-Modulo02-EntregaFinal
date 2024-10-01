@@ -5,3 +5,4 @@ const createHash  = (password) => bcrypt.hashSync(password, bcrypt.genSaltSync(1
 const isValidPassword = (password,user) => bcrypt.compareSync(password, user.password)
 
 export { createHash, isValidPassword }
+

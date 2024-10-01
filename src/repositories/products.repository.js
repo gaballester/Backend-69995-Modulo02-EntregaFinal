@@ -1,16 +1,18 @@
-import productDao from "../daos/product.dao.js"
-
+import productDao from "../daos/db/product.dao.js"
+//new
 class ProductRepository {
     async createProduct(prodData){
         return await productDao.save(prodData)
     }
 
     async getProducts(query,options) {
+        console.log('repo',query,options)
+        console.log('pen',await productDao.paginate(query,options))
         return await productDao.paginate(query,options)
     }
-    async getProductsQuery(limit, page, sort, category) {
+  /*   async getProductsQuery(limit, page, sort, category) {
         return await productDao.getProductsPag(limit, page, sort, category)
-    }
+    } */
 
     async getProductById(id) {
         return await productDao.findById(id)

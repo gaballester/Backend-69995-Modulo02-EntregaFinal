@@ -1,4 +1,4 @@
-import userDao from '../daos/user.dao.js'
+import userDao from '../daos/db/user.dao.js'
 
 class UserRepository {
     async createUser(userData) {

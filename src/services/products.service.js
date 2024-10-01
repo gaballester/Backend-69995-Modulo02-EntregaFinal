@@ -1,6 +1,6 @@
-import productRepository from "../repositories/product.repository.js"
-
-class ProductService {
+import productRepository from "../repositories/products.repository.js"
+//new
+class ProductsService {
 
     async addProduct  (prodData) {
         try {
@@ -84,4 +84,4 @@ class ProductService {
 
 }
 
-export default new ProductService
+export default new ProductsService

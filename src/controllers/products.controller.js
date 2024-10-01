@@ -1,27 +1,21 @@
-import productService from "../services/product.service.js"
-
-class ProductController {
+import productService from "../services/products.service.js"
+//new
+class ProductsController {
 
     async GetProductsPag (req,res) {
-        
+
         try {
 
             const page = Math.max(parseInt(req.query.page, 10) || 1, 1)
             const limit = Math.max(parseInt(req.query.limit, 10) || 10, 1)
             const order = req.query.sort
             const category = req.query.category || 'All';
-
-
-/*             const page  = parseInt(req.query.page,10) || 1
-            const limit  = parseInt(req.query.limit,10) || 10
-            const order  = req.query.sort 
-            const category = req.query.category || 'All' */
     
             let query = {}
             let sort = {}
     
             if ( category !== 'All' ) {
-                query.category = category
+                query = {category: category }
             }
             
             switch (order) {
@@ -37,11 +31,15 @@ class ProductController {
             }
       
             const options = {page, limit, sort}    
-            const productsResult = await productService.getProductsPag(query,options)
-            const arrayProducts = productsResult.docs.map( prod => {
+
+            const payloads = await productService.getProductsPag(query,options)
+            console.log('result GAB',payloads)
+            return payloads
+
+         /*    const arrayProducts = productsResult.docs.map( prod => {
                 const {_id,...rest} = prod.toObject()
                 //return rest
-            })
+            }) */
     
             res.send(  {
                 status: 'SUCCESS',
@@ -101,4 +99,4 @@ class ProductController {
 
 }
 
-export default new ProductController
+export default new ProductsController
